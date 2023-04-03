@@ -2,26 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Foot = () => {
-  const [quote, setQuote] = useState(["Pending..."])
-  useEffect (() => {
-    async function getQuote() {
-      try{
-        const response = await fetch(`${process.env.REACT_APP_THERAPYHUB_API_HOST}zenquotes`);
-            if (response.ok) {
-                var quoteData = await response.json();
-                if (quoteData==='"Too many requests. Obtain an auth key for unlimited access." - zenquotes.io'){
-                    quoteData="Just one small positive thought in the morning can change your whole day."
-                }
-                setQuote(quoteData)
-            }
-            else{setQuote("Just one small positive thought in the morning can change your whole day.")}
-      } catch (error) {
-        setQuote("Just one small positive thought in the morning can change your whole day.")
-      }
-
-    }
-    getQuote()
-  },[])
   return(
     <>
       <footer className="footer">
