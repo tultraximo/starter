@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.bg {
+  background-color: rgb(53, 53, 53);
+}
+
+.text {
+  text-align: center;
+  color: white
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

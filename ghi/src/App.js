@@ -18,6 +18,7 @@ function App() {
   const basename = process.env.PUBLIC_URL.replace(domain, '');
 
   return (
+    <div className="bg">
     <BrowserRouter basename={basename}>
       <AuthProvider>
         <GetToken />
@@ -32,6 +33,7 @@ function App() {
         <Foot/>
       </AuthProvider>
     </BrowserRouter>
+    </div>
   );
 }
 
