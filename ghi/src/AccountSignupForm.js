@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useToken } from "./Authentication";
 
 function AccountSignupForm() {
-  const [roleIds, setRoleIds] = useState([]);
-  const [role_id, setRoleId] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,10 +27,6 @@ function AccountSignupForm() {
     setPassword(value);
   };
 
-  const handleRoleIdChange = (event) => {
-    const value = event.target.value;
-    setRoleId(value);
-  };
 
   const handleCreateAccount = async (event) => {
     event.preventDefault();
@@ -40,7 +34,6 @@ function AccountSignupForm() {
     data.username = username;
     data.email = email;
     data.password = password;
-    data.role_id = role_id;
 
     const url = `${process.env.REACT_APP_THERAPYHUB_API_HOST}api/accounts`;
 
@@ -57,29 +50,12 @@ function AccountSignupForm() {
       setUsername("");
       setEmail("");
       setPassword("");
-      setRoleId("");
-
-      const account = await response.json();
-      const NewUsername = account.account.username;
-      if (account.account.role_id === 1) {
-        navigate(`/client/${NewUsername}`);
-      } else {
-        navigate(`/therapist/${NewUsername}`);
-      }
+      navigate(`/`);
     }
   };
 
-  const fetchData = async () => {
-    const url = `${process.env.REACT_APP_THERAPYHUB_API_HOST}role`;
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      setRoleIds(data);
-    }
-  };
 
   useEffect(() => {
-    fetchData();
   }, []);
 
   return (
