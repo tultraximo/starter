@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import therapy, client, accounts, api
+from routers import accounts
 from routers.authenticator import authenticator
 from fastapi.middleware.cors import CORSMiddleware
 import os
@@ -23,8 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(therapy.router)
-app.include_router(client.router)
+
 app.include_router(accounts.router)
-app.include_router(api.router)
 app.include_router(authenticator.router)

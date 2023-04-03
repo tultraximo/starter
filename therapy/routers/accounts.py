@@ -18,9 +18,6 @@ from queries.accounts import (
     AccountOut,
     AccountQueries,
     DuplicateAccountError,
-    RoleIn,
-    RoleOut,
-    RoleQueries,
 )
 
 
@@ -97,18 +94,3 @@ def delete_account(
     repo: AccountQueries = Depends(),
 ) -> bool:
     return repo.delete(id)
-
-
-@router.post("/role", response_model=Union[RoleOut, Error])
-def create_role(role: RoleIn, repo: RoleQueries = Depends()):
-    return repo.create(role)
-
-
-@router.get("/role", response_model=Union[List[RoleOut], Error])
-def all_roles(repo: RoleQueries = Depends()):
-    return repo.roles()
-
-
-@router.delete("/role/{role_id}", response_model=bool)
-def delete_role(role_id: int, repo: RoleQueries = Depends()) -> bool:
-    return repo.delete(role_id)

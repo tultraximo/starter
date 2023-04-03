@@ -106,7 +106,7 @@ export function useToken() {
     return handleErrorMessage(error);
   }
 
-  async function signup(username, password, email, role_id) {
+  async function signup(username, password, email) {
     const url = `${process.env.REACT_APP_THERAPYHUB_API_HOST}api/accounts`;
     const response = await fetch(url, {
       method: "post",
@@ -114,7 +114,6 @@ export function useToken() {
         username,
         password,
         email,
-        role_id,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +125,7 @@ export function useToken() {
     return false;
   }
 
-  async function update(username, password, email, role_id) {
+  async function update(username, password, email) {
     const url = `${process.env.REACT_APP_THERAPYHUB_API_HOST}api/accounts`;
     const response = await fetch(url, {
       method: "patch",
@@ -134,7 +133,6 @@ export function useToken() {
         username,
         password,
         email,
-        role_id,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -148,4 +146,3 @@ export function useToken() {
 
   return { token, login, logout, signup, update };
 }
-
