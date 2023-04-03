@@ -107,21 +107,6 @@ function AccountSignupForm() {
                 <label htmlFor="password">Password</label>
               </div>
               <div>
-                <select
-                  onChange={handleRoleIdChange}
-                  required
-                  name="role_id"
-                  id="role_id"
-                  className="form-select"
-                  autoComplete="current-password"
-                >
-                  <option>Choose role</option>
-                  {roleIds.map((role, index) => (
-                    <option key={index} value={role.id}>
-                      {role.role}
-                    </option>
-                  ))}
-                </select>
               </div>
               <p>
                 {" "}

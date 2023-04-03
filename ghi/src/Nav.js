@@ -9,7 +9,6 @@ function Nav() {
 
   useEffect(() => {
       if (token) {
-        parseJwt(token);
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
